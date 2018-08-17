@@ -1,0 +1,1 @@
+This program was not originally designed for release to public. In doing so it was created as a 'by developer for the developer' design which means that it may be difficult to use for the common individual. 
