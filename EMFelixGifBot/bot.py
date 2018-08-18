@@ -1,0 +1,48 @@
+import discord
+import asyncio
+import urllib.request, json
+import re
+
+from discord.ext import commands
+from discord.ext.commands import Bot
+
+bot = commands.Bot(command_prefix='!', description='None')
+
+regex = re.compile("(hi|what's up|yo|hey|hello) felix", re.IGNORECASE)
+getgif = re.compile("felix gif ", re.IGNORECASE)
+
+@bot.command(pass_context=True)
+async def message_me():
+	printf("test")
+
+# an example python version of the live stream
+# https://www.youtube.com/watch?v=tqT3O0S38gY&t=617s
+@bot.event
+async def on_message(message):
+	if regex.match(message.content):
+		await bot.send_message(message.channel, "hello")
+	elif getgif.match(message.content):
+		gif = message.content.split(" ")[2]
+
+		await bot.send_message(message.channel,
+			"Let me get that for you!")
+
+		try:
+			data = json.loads(urllib.request.urlopen(\
+			"https://api.giphy.com/v1/gifs/search"\
+			+ "?api_key=CgpyYYwbLIvyrrnc4Sjqe1QPHa52Qnzl"\
+			+ "&q=" + gif\
+			+ "&limit=1"\
+			+ "&offset=0"\
+			+ "&rating=R"\
+			+ "&lang=en").read())
+
+			await bot.send_message(message.channel, data["data"][0]["embed_url"])
+		except Exception as e:
+			await bot.send_message(message.channel,
+				"I'm sorry I couldn't fine that")
+
+
+
+
+bot.run("NDQ5MjkxMTU3ODk4MjY0NTc4.DloVLw.HK7--euizyzRmtuNvXwyds05vAE")
