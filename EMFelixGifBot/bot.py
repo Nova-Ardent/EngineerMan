@@ -50,3 +50,5 @@ async def on_message(message):
 
 
 bot.run("botauth2")
+
+# keys in commit history have been regenerated.
