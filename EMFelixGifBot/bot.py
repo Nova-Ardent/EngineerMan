@@ -11,6 +11,10 @@ bot = commands.Bot(command_prefix='!', description='None')
 regex = re.compile("(hi|what's up|yo|hey|hello) felix", re.IGNORECASE)
 getgif = re.compile("felix gif ", re.IGNORECASE)
 
+
+key = "Your key here"
+botauth2 = "auth2 for discord bot"
+
 @bot.command(pass_context=True)
 async def message_me():
 	printf("test")
@@ -30,7 +34,7 @@ async def on_message(message):
 		try:
 			data = json.loads(urllib.request.urlopen(\
 			"https://api.giphy.com/v1/gifs/search"\
-			+ "?api_key=CgpyYYwbLIvyrrnc4Sjqe1QPHa52Qnzl"\
+			+ "?api_key=" + key\
 			+ "&q=" + gif\
 			+ "&limit=1"\
 			+ "&offset=0"\
@@ -45,4 +49,4 @@ async def on_message(message):
 
 
 
-bot.run("NDQ5MjkxMTU3ODk4MjY0NTc4.DloVLw.HK7--euizyzRmtuNvXwyds05vAE")
+bot.run("botauth2")
