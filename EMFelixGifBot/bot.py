@@ -17,7 +17,7 @@ botauth2 = "auth2 for discord bot"
 
 @bot.command(pass_context=True)
 async def message_me():
-	printf("test")
+	print("test")
 
 # an example python version of the live stream
 # https://www.youtube.com/watch?v=tqT3O0S38gY&t=617s
