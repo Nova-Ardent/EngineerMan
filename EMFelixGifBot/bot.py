@@ -44,7 +44,7 @@ async def on_message(message):
 			await bot.send_message(message.channel, data["data"][0]["embed_url"])
 		except Exception as e:
 			await bot.send_message(message.channel,
-				"I'm sorry I couldn't fine that")
+				"I'm sorry I couldn't find that")
 
 
 
